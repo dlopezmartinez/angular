@@ -8,12 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class OddComponent implements OnInit {
 
 
-  @Input('createOdd') create: any;
-  num: number;
+  @Input('createOdd') created: {
+    type: string,
+    data: number,
+  };
 
-  constructor(n: number) {
-    this.num = n;
-  }
 
   ngOnInit(): void {
   }

@@ -7,13 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EvenComponent implements OnInit {
 
-  @Input('createEven') create: any;
+  @Input('createdEven') create: {
+    type: string, data: number
+  };
 
-  num: number;
-
-  constructor(n: number) {
-    this.num = n;
-  }
 
   ngOnInit(): void {
   }

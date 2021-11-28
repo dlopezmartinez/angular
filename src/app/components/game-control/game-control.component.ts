@@ -1,7 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-game-control',
   templateUrl: './game-control.component.html',
@@ -9,10 +7,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class GameControlComponent implements OnInit {
 
-  @Output('game') event: EventEmitter<any> = new EventEmitter();
+  @Output('gameEvent') event: EventEmitter<any> = new EventEmitter();
   intervalo: any;
   count: number = 0;
 
+  @Output('gameStopped') stopEvent = new EventEmitter();
 
   constructor() { }
 
@@ -27,12 +26,12 @@ export class GameControlComponent implements OnInit {
     this.intervalo = setInterval(() => {
       this.count++;
       this.event.emit({ data: this.count });
-      console.log('Count has been ' + this.count + ' times');
     }, 1000);
   }
 
   onStopGame() {
     clearInterval(this.intervalo);
+    this.stopEvent.emit();
     console.log('Stopping the game!!');
   }
 

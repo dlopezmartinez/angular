@@ -7,26 +7,31 @@ import { OddComponent } from './components/odd/odd.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnChanges {
+export class AppComponent {
 
 
-  @Input('game') gameEvent: number;
-
-  arrayOdds: OddComponent[] = [];
-  arrayEvens: EvenComponent[] = [];
 
 
-  ngOnChanges() {
-    console.log(this.gameEvent);
-    this.checkGameEvent();
+  arrayOdds: { type: string, data: number }[] = [];
+  arrayEvens: { type: string, data: number }[] = [];
+
+  checkGameEvent(gameEvent: {
+    type: string,
+    data: number
+  }) {
+    if (gameEvent.data % 2 === 0) {
+      console.log('Añadiendo Odd');
+      console.log(this.arrayOdds);
+      this.arrayOdds.push({ type: 'Odd', data: gameEvent.data });
+    } else {
+      console.log('Añadiendo Even');
+      this.arrayEvens.push({ type: 'Even', data: gameEvent.data });
+    }
   }
 
-  checkGameEvent() {
-    if (this.gameEvent % 2 == 0) {
-      this.arrayOdds.push(new OddComponent(this.gameEvent));
-    } else {
-      this.arrayEvens.push(new EvenComponent(this.gameEvent));
-    }
+  stopGameEvent() {
+    this.arrayOdds = [];
+    this.arrayEvens = [];
   }
 
 

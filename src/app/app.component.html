@@ -4,17 +4,20 @@
 <div class="container" padding="padding-top">
   <div class="row">
     <div class="col-xs-12">
-      <app-game-control></app-game-control>
+      <app-game-control
+        (gameEvent)="checkGameEvent($event)"
+        (gameStopped)="stopGameEvent()"
+      ></app-game-control>
     </div>
   </div>
   <hr />
   <br />
   <div class="row">
-    <div class="col-xs-6" *ngFor="let odd of arrayOdds">
-      <app-odd></app-odd>
+    <div class="col-xs-6">
+      <app-odd *ngFor="let odd of arrayOdds" [createOdd]="odd"></app-odd>
     </div>
-    <div class="col-xs-6" *ngFor="let even of arrayEvens">
-      <app-even></app-even>
+    <div class="col-xs-6">
+      <app-even *ngFor="let even of arrayEvens" [createdEven]="even"></app-even>
     </div>
   </div>
 </div>
