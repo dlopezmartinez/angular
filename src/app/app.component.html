@@ -1,9 +1,18 @@
-<app-header (viewSelect)="showView($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <app-recipes *ngIf="view === 1"></app-recipes>
-      <app-shopping-list *ngIf="view === 2"></app-shopping-list>
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <li
+          class="list-group-item">
+        </li>
+      </ul>
+      <ng-template [ngIf]="onlyOdd">
+        <p>Only odd</p>
+      </ng-template>
     </div>
   </div>
 </div>
