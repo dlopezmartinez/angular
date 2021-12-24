@@ -1,9 +1,9 @@
-<app-header></app-header>
+<app-header (viewSelect)="showView($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <app-recipes *ngIf="view === 1"></app-recipes>
+      <app-shopping-list *ngIf="view === 2"></app-shopping-list>
     </div>
   </div>
 </div>
