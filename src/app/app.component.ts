@@ -6,23 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'shopping';
-  view: number = 0;
+  accounts = [
+    {
+      name: 'Master Account',
+      status: 'active'
+    },
+    {
+      name: 'Testaccount',
+      status: 'inactive'
+    },
+    {
+      name: 'Hidden Account',
+      status: 'unknown'
+    }
+  ];
 
-
-
-  showView(event: { viewType: string }) {
-
-    if (event.viewType === 'recipes')
-      this.view = 1;
-
-    if (event.viewType === 'shopping')
-      this.view = 2;
-
-    if (event.viewType === 'home')
-      this.view = 0;
-
+  onAccountAdded(newAccount: {name: string, status: string}) {
+    this.accounts.push(newAccount);
   }
 
-
+  onStatusChanged(updateInfo: {id: number, newStatus: string}) {
+    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  }
 }
