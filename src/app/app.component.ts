@@ -6,23 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'shopping';
-  view: number = 0;
+  loadedFeature = 'recipe';
 
-
-
-  showView(event: { viewType: string }) {
-
-    if (event.viewType === 'recipes')
-      this.view = 1;
-
-    if (event.viewType === 'shopping')
-      this.view = 2;
-
-    if (event.viewType === 'home')
-      this.view = 0;
-
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
   }
-
-
 }

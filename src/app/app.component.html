@@ -1,9 +1,9 @@
-<app-header (viewSelect)="showView($event)"></app-header>
+<app-header (featureSelected)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <app-recipes *ngIf="view === 1"></app-recipes>
-      <app-shopping-list *ngIf="view === 2"></app-shopping-list>
+    <div class="col-md-12">
+      <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
     </div>
   </div>
 </div>
