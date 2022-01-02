@@ -20,7 +20,7 @@ export class ServersComponent implements OnInit {
   }
 
   onReload() {
-    this.router.navigate(['../servers'], { relativeTo: this.route }); //con relativeTo podemos indicar la ruta relativa en la que nos basamos, además de que en el constructor podemos pasar nuestro "route" de tipo ActivatedRoute el cual nos devuelve nuestra ruta actual ya que desde router.navigate, la desconocemos;
+    this.router.navigate(['../servers'], { relativeTo: this.route, queryParamsHandling: 'preserve' }); //con relativeTo podemos indicar la ruta relativa en la que nos basamos, además de que en el constructor podemos pasar nuestro "route" de tipo ActivatedRoute el cual nos devuelve nuestra ruta actual ya que desde router.navigate, la desconocemos; con queryParamsHandling = 'preserve' podemos asegurarnos que nuestros queryParams se conservarán aunque pasemos a otro componente ( su comportamiento por defecto es simplemente eliminar los queryParams )
   }
 
 }
