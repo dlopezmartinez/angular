@@ -9,6 +9,7 @@ import { UserService } from '../user.service';
 })
 export class UserComponent implements OnInit {
   id: number;
+  active: boolean;
 
   constructor(private route: ActivatedRoute,
     private userS: UserService) {
@@ -21,6 +22,7 @@ export class UserComponent implements OnInit {
   }
 
   onActivate() {
-    this.userS.activatedEmitter.emit(true);
+    this.active = !this.active
+    this.userS.activatedEmitter.next(this.active);
   }
 }
