@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+  userActivated = false;
+
+
+  constructor(private userS: UserService) { }
+
+
+
+  ngOnInit() {
+    this.userS.activatedEmitter.subscribe((didActivate) => {
+      this.userActivated = didActivate;
+    });
+  }
 }
