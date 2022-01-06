@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,12 +7,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @ViewChild('f') form: NgForm; //otra manera de tener acceso a los forms, incluso antes de que hagan submit.
+  defaultQuestion = 'pet'
+  answer = '';
+
   suggestUserName() {
     const suggestedName = 'Superuser';
   }
 
 
-  onSubmit(form: NgForm) {
-    console.log(form);
+  // onSubmit(form: NgForm) {
+  //   console.log(form);
+  // }
+
+  onSubmit() {
+    console.log(this.form);
   }
 }
