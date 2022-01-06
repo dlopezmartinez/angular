@@ -8,12 +8,28 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
 
-  @ViewChild('f') form: NgForm; //otra manera de tener acceso a los forms, incluso antes de que hagan submit.
+  @ViewChild('f') signupForm: NgForm; //otra manera de tener acceso a los forms, incluso antes de que hagan submit.
   defaultQuestion = 'pet'
   answer = '';
+  genders = ['male', 'female', 'helicoptero apache de combate']
+  defaultGender = 'helicoptero apache de combate';
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    })
+    // this.form.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // })
   }
 
 
