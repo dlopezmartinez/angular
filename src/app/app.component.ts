@@ -8,10 +8,12 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
 
-  defaultSub = 'advanced'
+  defaultSub = "Pro";
+  subscriptions = ["Basic", "Advanced", "Pro"];
 
-  onSubmit(form: NgForm) {
+
+  onSubmit(form: NgForm): void {
     console.log(form.value);
-
+    console.log(this.defaultSub);
   }
 }

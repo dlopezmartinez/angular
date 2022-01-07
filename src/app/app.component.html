@@ -18,18 +18,20 @@
             >Please enter a username</span
           >
           <br />
-          <label for="subscription">Secret Questions</label>
-          <select
-            id="subscription"
-            class="form-control"
-            [ngModel]="defaultSub"
-            name="subscription"
-            #select
-          >
-            <option value="basic">Basic</option>
-            <option value="advanced">Advanced</option>
-            <option value="pro">Pro</option>
-          </select>
+          <div class="form-group">
+            <label for="subscription">Subscription Type</label>
+            <select
+              id="subscription"
+              class="form-control"
+              [ngModel]="defaultSub"
+              name="subscription"
+              #subscription="ngModel"
+            >
+              <option *ngFor="let sub of subscriptions" [value]="sub">
+                {{ sub }}
+              </option>
+            </select>
+          </div>
           <br />
           <label for="pass">Password</label>
           <input
