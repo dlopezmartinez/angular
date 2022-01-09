@@ -13,13 +13,14 @@ export class AppComponent implements OnInit {
   projectForm: FormGroup;
   forbiddenProjectsName = ['Test'];
   projectStatus = ['Stable', 'Critical', 'Finished'];
+  defaultStatus = 'Stable';
 
 
   ngOnInit(): void {
     this.projectForm = new FormGroup({
       'name': new FormControl(null, [Validators.required], this.forbiddenNamesAsync.bind(this)),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'status': new FormControl(null, Validators.required)
+      'status': new FormControl(this.defaultStatus, Validators.required)
     })
 
 
